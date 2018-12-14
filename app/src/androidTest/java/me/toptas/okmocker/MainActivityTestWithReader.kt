@@ -17,7 +17,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class MainActivityTest {
+class MainActivityTestWithReader {
 
     @get:Rule
     val rule = ActivityTestRule(
@@ -28,9 +28,11 @@ class MainActivityTest {
 
     @Before
     fun setup() {
+
         NetworkManager.instance.clientBuilder = OkHttpClient.Builder().apply {
-            addInterceptor(OkMockerReadInterceptor(InstrumentationRegistry.getContext()))
+            addInterceptor(OkMockerReadInterceptor(InstrumentationRegistry.getContext(), MyReader()))
         }
+
         val intent = Intent()
         rule.launchActivity(intent)
     }
@@ -39,9 +41,9 @@ class MainActivityTest {
     fun test() {
         Espresso.onView(ViewMatchers.withId(R.id.btn))
             .perform(ViewActions.click())
-
+        Thread.sleep(3000)
         Espresso.onView(ViewMatchers.withId(R.id.tvText))
-            .check(ViewAssertions.matches(ViewMatchers.withText("okmocker")))
+            .check(ViewAssertions.matches(ViewMatchers.withText("result_from_reader")))
 
     }
 }

@@ -9,9 +9,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 class NetworkManager {
 
     lateinit var apiService: ApiService
-    val clientBuilder = OkHttpClient.Builder()
+    var clientBuilder = OkHttpClient.Builder()
 
-    fun init(context: Context) {
+    fun init() {
 
         if (BuildConfig.DEBUG) {
             clientBuilder.addInterceptor(OkMockerWriteInterceptor())
@@ -22,7 +22,7 @@ class NetworkManager {
 
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://asdfg.free.beeceptor.com/")
+            .baseUrl("https://okmocker.free.beeceptor.com/")
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()

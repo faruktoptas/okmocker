@@ -6,8 +6,8 @@ import retrofit2.http.GET
 
 interface ApiService {
 
-    @GET("business")
-    fun dummy(): Call<List<Response>>
+    @GET("okmocker")
+    fun dummy(): Call<Response>
 }
 
-data class Response(var name: String?)
+data class Response(var result: String?)

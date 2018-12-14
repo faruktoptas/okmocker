@@ -7,26 +7,27 @@ import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 
+const val TAG = "okmocker"
+
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        NetworkManager.instance.init(applicationContext)
-
+        NetworkManager.instance.init()
         val service = NetworkManager.instance.apiService
 
         btn.setOnClickListener {
-            service.dummy().enqueue(object : Callback<List<Response>?> {
-                override fun onFailure(call: Call<List<Response>?>, t: Throwable) {
-                    Log.v("asd", "fail $t")
+            service.dummy().enqueue(object : Callback<Response?> {
+                override fun onFailure(call: Call<Response?>, t: Throwable) {
+                    Log.v(TAG, "fail $t")
                 }
 
-                override fun onResponse(call: Call<List<Response>?>, response: retrofit2.Response<List<Response>?>) {
-                    Log.v("asd", "success")
-                    response.body()?.get(0)?.apply {
-                        tvText.text = name
+                override fun onResponse(call: Call<Response?>, response: retrofit2.Response<Response?>) {
+                    Log.v(TAG, "success")
+                    response.body()?.apply {
+                        tvText.text = result
                     }
                 }
             })
