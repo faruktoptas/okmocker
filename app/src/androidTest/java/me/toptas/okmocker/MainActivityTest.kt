@@ -3,13 +3,12 @@ package me.toptas.okmocker
 import android.content.Intent
 import android.support.test.InstrumentationRegistry
 import android.support.test.espresso.Espresso
-import android.support.test.espresso.ViewAction
 import android.support.test.espresso.action.ViewActions
 import android.support.test.espresso.assertion.ViewAssertions
 import android.support.test.espresso.matcher.ViewMatchers
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
-import me.toptas.okmockerreader.OkMockerReadInterceptor
+import me.toptas.okmockreader.OkMockerReadInterceptor
 import okhttp3.OkHttpClient
 import org.junit.Before
 import org.junit.Rule

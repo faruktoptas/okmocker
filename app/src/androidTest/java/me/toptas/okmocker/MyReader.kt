@@ -1,9 +1,9 @@
 package me.toptas.okmocker
 
 import android.util.Log
-import me.toptas.okmockerreader.OkMockerReader
+import me.toptas.okmockreader.OkMockerReader
 
-import me.toptas.okmockerreader.toFileName
+import me.toptas.okmockreader.toFileName
 import okhttp3.Interceptor
 import okhttp3.MediaType
 import okhttp3.Request

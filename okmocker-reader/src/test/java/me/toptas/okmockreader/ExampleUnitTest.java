@@ -1,4 +1,4 @@
-package me.toptas.okmockerreader;
+package me.toptas.okmockreader;
 
 import org.junit.Test;
 

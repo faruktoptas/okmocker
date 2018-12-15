@@ -1,8 +1,7 @@
-package me.toptas.okmockerreader
+package me.toptas.okmockreader
 
 import android.content.res.AssetManager
 import android.util.Log
-import android.view.PixelCopy.request
 import okhttp3.*
 
 interface OkMockerReader {
