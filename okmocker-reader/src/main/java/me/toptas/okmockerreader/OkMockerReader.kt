@@ -1,4 +1,4 @@
-package me.toptas.okmockreader
+package me.toptas.okmockerreader
 
 import android.content.res.AssetManager
 import android.util.Log

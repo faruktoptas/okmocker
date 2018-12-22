@@ -8,7 +8,7 @@ import android.support.test.espresso.assertion.ViewAssertions
 import android.support.test.espresso.matcher.ViewMatchers
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
-import me.toptas.okmockreader.OkMockerReadInterceptor
+import me.toptas.okmockerreader.OkMockerReadInterceptor
 import okhttp3.OkHttpClient
 import org.junit.Before
 import org.junit.Rule
