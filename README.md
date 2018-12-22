@@ -10,9 +10,9 @@ if (BuildConfig.DEBUG) {
     okHttpClientBuilder.addInterceptor(OkMockerWriteInterceptor())
 }
 ```
-Run the app. Responses from the server will be saved to the external storage. Don't forget to grant `WRITE_EXTERNAL_STORAGE` permission. (If your app doesn't need `WRITE_EXTERNAL_STORAGE` permission you can add this permission to a specific build variant that you run the tests)
+Run the app. Responses from the server will be saved to the external storage. Don't forget to grant `WRITE_EXTERNAL_STORAGE` permission. (If your app doesn't need `WRITE_EXTERNAL_STORAGE` permission [you can add this permission to a specific build variant](https://medium.com/android-bits/implement-build-variant-specific-permissions-a330540871b0) that you run the tests)
 
-### Step 2 - Pull responses to assets
+### Step 2 - Pull responses from device storage to assets folder
 Pull saved responses to assets under `androidTest` folder.
 ```bash
 adb pull /sdcard/okmock app/src/androidTest/assets
