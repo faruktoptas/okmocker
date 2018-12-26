@@ -21,7 +21,7 @@ adb pull /sdcard/okmock app/src/androidTest/assets
 ### Step 3 - Add reader interceptor to tests then run the test
 ```kotlin
 okHttpClientBuilder
-.addInterceptor(OkMockerReadInterceptor(InstrumentationRegistry.getContext()))
+.addInterceptor(OkMockerReadInterceptor(AssetsReader(InstrumentationRegistry.getContext().assets)))
 ```
 
 ## Case 2 - Use mock responses to speed up your development
@@ -36,7 +36,7 @@ adb pull /sdcard/okmock app/src/[BUILD_VARIANT]/assets
 Use application context
 ```kotlin
 okHttpClientBuilder
-.addInterceptor(OkMockerReadInterceptor(applicationContext))
+.addInterceptor(OkMockerReadInterceptor(AssetsReader(applicationContext.assets)))
 ```
 
 ## Case 3 - Use your custom reader/writers
@@ -61,7 +61,7 @@ class MyReader : OkMockerReader {
 Pass the reader to the interceptor
 
 ```kotlin
-.addInterceptor(OkMockerReadInterceptor(InstrumentationRegistry.getContext(), MyReader()))
+.addInterceptor(OkMockerReadInterceptor(MyReader()))
 ```
 
 # License
