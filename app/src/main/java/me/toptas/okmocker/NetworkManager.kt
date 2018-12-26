@@ -1,6 +1,6 @@
 package me.toptas.okmocker
 
-import android.content.Context
+import me.toptas.okmockerwriter.LogCatLogger
 import me.toptas.okmockerwriter.OkMockerWriteInterceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -14,7 +14,9 @@ class NetworkManager {
     fun init() {
 
         if (BuildConfig.DEBUG) {
-            clientBuilder.addInterceptor(OkMockerWriteInterceptor())
+            clientBuilder.addInterceptor(OkMockerWriteInterceptor().apply {
+                logger = LogCatLogger()
+            })
         }
 
         val client = clientBuilder

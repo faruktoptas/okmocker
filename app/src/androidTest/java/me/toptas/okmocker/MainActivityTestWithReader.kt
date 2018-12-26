@@ -29,7 +29,7 @@ class MainActivityTestWithReader {
     fun setup() {
 
         NetworkManager.instance.clientBuilder = OkHttpClient.Builder().apply {
-            addInterceptor(OkMockerReadInterceptor(InstrumentationRegistry.getContext(), MyReader()))
+            addInterceptor(OkMockerReadInterceptor(MyReader()))
         }
 
         val intent = Intent()
@@ -40,7 +40,7 @@ class MainActivityTestWithReader {
     fun test() {
         Espresso.onView(ViewMatchers.withId(R.id.btn))
             .perform(ViewActions.click())
-        Thread.sleep(3000)
+
         Espresso.onView(ViewMatchers.withId(R.id.tvText))
             .check(ViewAssertions.matches(ViewMatchers.withText("result_from_reader")))
 

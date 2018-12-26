@@ -16,22 +16,22 @@
 
 package me.toptas.okmockerreader
 
-import android.content.Context
 import okhttp3.Interceptor
 import okhttp3.Protocol
 import okhttp3.Response
 
 class OkMockerReadInterceptor(
-    private val context: Context,
-    private val reader: OkMockerReader = AssetsReader(context.assets)
-) :
-    Interceptor {
+    private val reader: OkMockerReader
+) : Interceptor {
+
+    var logger: Logger? = null
+
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
-        log("OkMocker enabled")
+        logger?.log("OkMocker enabled")
         return if (reader.canRead(request)) {
-            log("OkMocker can read")
             val body = reader.read(chain)
+            logger?.log("OkMocker is mocking with body: -> $body")
             Response.Builder()
                 .code(200)
                 .body(body)
@@ -40,6 +40,7 @@ class OkMockerReadInterceptor(
                 .message("")
                 .build()
         } else {
+            logger?.log("OkMocker can't read. Proceed chain.")
             chain.proceed(request)
         }
     }

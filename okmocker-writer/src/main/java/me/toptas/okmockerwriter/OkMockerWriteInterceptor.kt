@@ -25,6 +25,8 @@ import java.nio.charset.Charset
 
 class OkMockerWriteInterceptor(private val writer: OkMockerWriter = SdCardWriter()) : Interceptor {
 
+    var logger: Logger? = null
+
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
         val response = chain.proceed(request)
@@ -57,7 +59,7 @@ class OkMockerWriteInterceptor(private val writer: OkMockerWriter = SdCardWriter
 
         if (isPlaintext(buffer) && contentLength != 0L) {
             buffer?.clone()?.readString(charset)?.apply {
-                log(this)
+                logger?.log("OkMocker write -> $this")
                 writer.write(request.url(), this)
             }
         }

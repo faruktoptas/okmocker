@@ -8,6 +8,7 @@ import android.support.test.espresso.assertion.ViewAssertions
 import android.support.test.espresso.matcher.ViewMatchers
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
+import me.toptas.okmockerreader.AssetsReader
 import me.toptas.okmockerreader.OkMockerReadInterceptor
 import okhttp3.OkHttpClient
 import org.junit.Before
@@ -28,7 +29,7 @@ class MainActivityTest {
     @Before
     fun setup() {
         NetworkManager.instance.clientBuilder = OkHttpClient.Builder().apply {
-            addInterceptor(OkMockerReadInterceptor(InstrumentationRegistry.getContext()))
+            addInterceptor(OkMockerReadInterceptor(AssetsReader(InstrumentationRegistry.getContext().assets)))
         }
         val intent = Intent()
         rule.launchActivity(intent)
