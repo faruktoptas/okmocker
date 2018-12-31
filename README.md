@@ -30,7 +30,7 @@ Step 1 is the same as above
 ### Step 2 
 Pull responses to the build variant that will use mocking.
 ```bash
-adb pull /sdcard/okmock app/src/[BUILD_VARIANT]/assets
+adb pull /sdcard/okmock app/src/[BUILD_VARIANT]/assets/
 ````
 ### Step 3
 Use application context
