@@ -6,7 +6,7 @@ import retrofit2.http.GET
 
 interface ApiService {
 
-    @GET("okmocker")
+    @GET("faruktoptas/okmocker/master/app/sample.json")
     fun dummy(): Call<Response>
 }
 

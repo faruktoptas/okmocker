@@ -19,15 +19,14 @@ class NetworkManager {
             })
         }
 
-        val client = clientBuilder
-            .build()
+        val client = clientBuilder.build()
 
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://okmocker.free.beeceptor.com/")
-            .client(client)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+                .baseUrl("https://raw.githubusercontent.com/")
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
 
         apiService = retrofit.create(ApiService::class.java)
     }
