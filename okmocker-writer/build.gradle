@@ -4,38 +4,18 @@ apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.github.dcendents.android-maven'
 
 ext {
-
-    bintrayRepo = "okmocker"
     bintrayName = "me.toptas.okmockerwriter"
-
-    publishedGroupId = 'me.toptas.okmocker'
     libraryName = 'okmocker-writer'
     artifact = 'okmocker-writer'
-
-    libraryVersion = '1.0.5'
-
-    libraryDescription = 'Mock OkHttp responses at Interceptor level'
-
-    siteUrl = 'https://github.com/faruktoptas/okmocker'
-    gitUrl = 'https://github.com/faruktoptas/okmocker'
-
-    developerId = 'faruktoptas'
-    developerName = 'Faruk Toptas'
-    developerEmail = 'faruktoptas@gmail.com'
-
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
 }
 
 android {
-    compileSdkVersion 28
-
+    compileSdkVersion 29
 
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
 
