@@ -21,12 +21,11 @@ class NetworkManager {
 
         val client = clientBuilder.build()
 
-
         val retrofit = Retrofit.Builder()
-                .baseUrl("https://raw.githubusercontent.com/")
-                .client(client)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
+            .baseUrl("https://raw.githubusercontent.com/")
+            .client(client)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
 
         apiService = retrofit.create(ApiService::class.java)
     }

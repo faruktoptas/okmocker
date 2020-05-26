@@ -20,28 +20,30 @@ import okhttp3.Interceptor
 import okhttp3.Protocol
 import okhttp3.Response
 
-class OkMockerReadInterceptor(
-    private val reader: OkMockerReader
-) : Interceptor {
+class OkMockerReadInterceptor(private val reader: OkMockerReader) : Interceptor {
 
-    var logger: Logger? = null
+    var logger: Logger? = LogCatLogger()
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
         logger?.log("OkMocker enabled")
-        return if (reader.canRead(request)) {
+
+        if (reader.canRead(request)) {
+            OkMockerIdlingResource.instance.increment()
             val body = reader.read(chain)
-            logger?.log("OkMocker is mocking with body: -> $body")
-            Response.Builder()
+            logger?.log("OkMocker is mocking with body: -> ${body.contentLength()}")
+            val response = Response.Builder()
                 .code(200)
                 .body(body)
                 .request(chain.request())
                 .protocol(Protocol.HTTP_2)
                 .message("")
                 .build()
+            OkMockerIdlingResource.instance.decrement()
+            return response
         } else {
             logger?.log("OkMocker can't read. Proceed chain.")
-            chain.proceed(request)
+            return chain.proceed(request)
         }
     }
 

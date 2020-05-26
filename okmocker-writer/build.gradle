@@ -12,7 +12,7 @@ ext {
     libraryName = 'okmocker-writer'
     artifact = 'okmocker-writer'
 
-    libraryVersion = '1.0.4'
+    libraryVersion = '1.0.5'
 
     libraryDescription = 'Mock OkHttp responses at Interceptor level'
 

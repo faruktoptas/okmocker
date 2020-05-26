@@ -28,13 +28,14 @@ class AssetsReader(private val assets: AssetManager) : OkMockerReader {
 
     var logger: Logger? = null
 
-    private val folder: String = "okmock"
+    private val folder: String = "okmocker"
 
-    override fun canRead(request: Request) = fileExists(assets, folder, request.url().toString().toFileName())
+    override fun canRead(request: Request) =
+        fileExists(assets, folder, request.url().toString().toFileName())
 
     override fun read(chain: Interceptor.Chain): ResponseBody {
         val path = chain.request().url().toString().toFileName()
-        val content = assets.open("$folder/$path").bufferedReader().use { it.readLine() }
+        val content = assets.open("$folder/$path").readBytes()
 
         logger?.log("OkMocker Read from assets: $content")
         return ResponseBody.create(MediaType.parse("application/json"), content)
@@ -42,4 +43,5 @@ class AssetsReader(private val assets: AssetManager) : OkMockerReader {
     }
 }
 
-internal fun fileExists(assets: AssetManager, path: String, file: String) = assets.list(path)?.contains(file) ?: false
+internal fun fileExists(assets: AssetManager, path: String, file: String) =
+    assets.list(path)?.contains(file) ?: false

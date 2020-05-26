@@ -15,7 +15,7 @@ Run the app. Responses from the server will be saved to the external storage. Do
 ### Step 2 - Pull responses from device storage to assets folder
 Pull saved responses to assets under `androidTest` folder.
 ```bash
-adb pull /sdcard/okmock app/src/androidTest/assets
+adb pull /sdcard/okmocker app/src/androidTest/assets
 ```
 
 ### Step 3 - Add reader interceptor to tests then run the test

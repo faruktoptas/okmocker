@@ -16,7 +16,10 @@
 
 package me.toptas.okmockerreader
 
-import okhttp3.*
+import okhttp3.Interceptor
+import okhttp3.Request
+import okhttp3.ResponseBody
+
 
 interface OkMockerReader {
     fun read(chain: Interceptor.Chain): ResponseBody
