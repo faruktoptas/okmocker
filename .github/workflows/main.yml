@@ -13,3 +13,5 @@ jobs:
       uses: eskatos/gradle-command-action@v1
       with:
         arguments: testDebugUnitTest
+    - name: Android Emulator (faruktoptas)
+      uses: faruktoptas/android-github-actions-emulator@1.1.0
