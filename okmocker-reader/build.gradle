@@ -2,21 +2,14 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.github.dcendents.android-maven'
-
-ext {
-    bintrayName = "me.toptas.okmockerreader"
-    libraryName = 'okmocker-reader'
-    artifact = 'okmocker-reader'
-}
-
+apply from: "$rootDir/dependencies.gradle"
 
 android {
-    compileSdkVersion 29
-
+    compileSdkVersion compileVersion
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 29
+        minSdkVersion minSdkVersion
+        targetSdkVersion targetSdkVersion
         versionCode 1
         versionName "1.0"
 
@@ -38,16 +31,13 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation deps.kotlin
+    implementation deps.okhttp
+    implementation deps.espresso
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.squareup.okhttp3:okhttp:3.12.0'
-    implementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-
-    testImplementation 'junit:junit:4.12'
-    testImplementation 'com.squareup.okhttp3:mockwebserver:3.12.1'
-    testImplementation 'com.android.support.test:runner:1.0.2'
-
+    testImplementation deps.junit
+    testImplementation deps.mockwebserver
+    testImplementation deps.testRunner
 }
 repositories {
     mavenCentral()

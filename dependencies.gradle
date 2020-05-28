@@ -1,0 +1,19 @@
+buildscript {
+    ext {
+        compileVersion = 29
+        minSdkVersion = 16
+        targetSdkVersion = 29
+
+        deps = [
+                'kotlin'       : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+                'okhttp'       : 'com.squareup.okhttp3:okhttp:3.12.0',
+                'espresso'     : 'com.android.support.test.espresso:espresso-core:3.0.2',
+
+                'junit'        : 'junit:junit:4.13',
+                'mockwebserver': 'com.squareup.okhttp3:mockwebserver:3.12.1',
+                'testRunner'   : 'com.android.support.test:runner:1.0.2'
+
+
+        ]
+    }
+}
