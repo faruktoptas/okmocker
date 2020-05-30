@@ -1,4 +1,5 @@
-# (WIP) okmocker
+# (WIP) okmocker ![Android CI Action](https://github.com/faruktoptas/okmocker/workflows/Android%20CI/badge.svg)
+
 Mock OkHttp responses at Interceptor level
 
 # Usage
