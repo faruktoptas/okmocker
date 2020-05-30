@@ -9,7 +9,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Gradle Command
+    - name: Gradle
       uses: eskatos/gradle-command-action@v1
       with:
         arguments: testDebugUnitTest
