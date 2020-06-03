@@ -16,13 +16,15 @@
 
 package me.toptas.okmockerreader
 
+import me.toptas.okmocker.core.DefaultLogger
+import me.toptas.okmocker.core.Logger
 import okhttp3.Interceptor
 import okhttp3.Protocol
 import okhttp3.Response
 
 class OkMockerReadInterceptor(private val reader: OkMockerReader) : Interceptor {
 
-    var logger: Logger? = LogCatLogger()
+    var logger: Logger? = DefaultLogger()
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()

@@ -34,6 +34,7 @@ dependencies {
     implementation deps.kotlin
     implementation deps.okhttp
     implementation deps.espresso
+    api project(':core')
 
     testImplementation deps.junit
     testImplementation deps.mockwebserver

@@ -1,1 +1,2 @@
 include ':app', ':okmocker-reader', ':okmocker-writer'
+include ':core'

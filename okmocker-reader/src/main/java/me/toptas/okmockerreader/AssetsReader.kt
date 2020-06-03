@@ -17,12 +17,12 @@
 package me.toptas.okmockerreader
 
 import android.content.res.AssetManager
+import me.toptas.okmocker.core.Logger
 import okhttp3.Interceptor
 import okhttp3.MediaType
 import okhttp3.Request
 import okhttp3.ResponseBody
-
-fun String.toFileName() = replace("://", "_").replace("/", "_")
+import me.toptas.okmocker.core.toOkMockerFileName
 
 class AssetsReader(private val assets: AssetManager) : OkMockerReader {
 
@@ -31,10 +31,10 @@ class AssetsReader(private val assets: AssetManager) : OkMockerReader {
     private val folder: String = "okmocker"
 
     override fun canRead(request: Request) =
-        fileExists(assets, folder, request.url().toString().toFileName())
+        fileExists(assets, folder, request.url().toString().toOkMockerFileName())
 
     override fun read(chain: Interceptor.Chain): ResponseBody {
-        val path = chain.request().url().toString().toFileName()
+        val path = chain.request().url().toString().toOkMockerFileName()
         val content = assets.open("$folder/$path").readBytes()
 
         logger?.log("OkMocker Read from assets: $content")

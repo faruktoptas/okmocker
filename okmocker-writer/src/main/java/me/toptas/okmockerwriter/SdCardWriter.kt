@@ -17,18 +17,19 @@
 package me.toptas.okmockerwriter
 
 import android.os.Environment
+import me.toptas.okmocker.core.Logger
+import me.toptas.okmocker.core.toOkMockerFileName
 import okhttp3.HttpUrl
 import java.io.File
 import java.io.PrintWriter
 
-fun String.toFileName() = replace("://", "_").replace("/", "_")
 
 class SdCardWriter : OkMockerWriter {
 
     var logger: Logger? = null
 
     override fun write(url: HttpUrl, body: String) {
-        writeToSd(url.toString().toFileName(), body)
+        writeToSd(url.toString().toOkMockerFileName(), body)
     }
 
     private fun writeToSd(file: String, content: String?) {

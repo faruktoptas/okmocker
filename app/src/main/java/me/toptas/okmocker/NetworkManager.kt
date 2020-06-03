@@ -1,6 +1,6 @@
 package me.toptas.okmocker
 
-import me.toptas.okmockerwriter.LogCatLogger
+import me.toptas.okmocker.core.DefaultLogger
 import me.toptas.okmockerwriter.OkMockerWriteInterceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -15,7 +15,7 @@ class NetworkManager {
 
         if (BuildConfig.DEBUG) {
             clientBuilder.addInterceptor(OkMockerWriteInterceptor().apply {
-                logger = LogCatLogger()
+                logger = DefaultLogger()
             })
         }
 
