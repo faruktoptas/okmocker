@@ -66,9 +66,9 @@ Pass the reader to the interceptor
 ```
 
 # TODO
-[] Optimize file names
-[] okmocker-mockwebserver
-[] Upload to maven via Github Actions
+- [ ] Optimize file names
+- [ ] okmocker-mockwebserver
+- [ ] Upload to maven via Github Actions
 
 # License
 [Apache License 2.0](https://github.com/faruktoptas/okmocker/blob/master/LICENSE)
