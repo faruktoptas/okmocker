@@ -29,7 +29,7 @@ jobs:
         uses: actions/setup-java@v1
 
       - name: Upload Artifacts
-        run: ./gradlew core:install; ./gradlew core:bintrayUpload;./gradlew okmocker-reader:install; ./gradlew okmocker-reader:bintrayUpload; ./gradlew okmocker-writer:install; ./gradlew okmocker-reader:bintrayUpload
+        run: ./gradlew clean install; ./gradlew bintrayUpload
         env:
           bintray.user: ${{ secrets.BINTRAY_USER }}
           bintray.apikey: ${{ secrets.BINTRAY_API_KEY }}
