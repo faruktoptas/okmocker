@@ -20,7 +20,7 @@ jobs:
 
   publish:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
+    if: github.base_ref == 'refs/heads/master'
     needs:
       - build
     steps:
@@ -29,6 +29,8 @@ jobs:
 
       - name: Configure JDK
         uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
 
       - name: Upload Artifacts
         run: ./gradlew clean install; ./gradlew bintrayUpload
