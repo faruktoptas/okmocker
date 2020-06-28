@@ -1,7 +1,7 @@
 package me.toptas.okmocker
 
-import me.toptas.okmocker.core.DefaultLogger
 import me.toptas.okmockerwriter.OkMockerWriteInterceptor
+import me.toptas.okmockerwriter.internal.DefaultLogger
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
