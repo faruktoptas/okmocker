@@ -31,10 +31,13 @@ jobs:
         with:
           java-version: 1.8
 
-      - name: Upload Artifacts
-        run: ./gradlew clean install; ./gradlew bintrayUpload
-        env:
-          bintray.user: ${{ secrets.BINTRAY_USER }}
-          bintray.apikey: ${{ secrets.BINTRAY_API_KEY }}
+      - name: Install for Upload
+        run: ./gradlew clean install
+
+      - name: Upload
+          run: ./gradlew bintrayUpload
+          env:
+            bintray.user: ${{ secrets.BINTRAY_USER }}
+            bintray.apikey: ${{ secrets.BINTRAY_API_KEY }}
 
 
