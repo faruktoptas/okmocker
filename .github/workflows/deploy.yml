@@ -35,9 +35,9 @@ jobs:
         run: ./gradlew clean install
 
       - name: Upload
-          run: ./gradlew bintrayUpload
-          env:
-            bintray.user: ${{ secrets.BINTRAY_USER }}
-            bintray.apikey: ${{ secrets.BINTRAY_API_KEY }}
+        run: ./gradlew bintrayUpload
+        env:
+          bintray.user: ${{ secrets.BINTRAY_USER }}
+          bintray.apikey: ${{ secrets.BINTRAY_API_KEY }}
 
 
