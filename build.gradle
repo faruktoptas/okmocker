@@ -17,6 +17,8 @@ buildscript {
         licenseName = 'The Apache Software License, Version 2.0'
         licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
         allLicenses = ["Apache-2.0"]
+        bintray.user = System.getenv("bintray.user") ?: ''
+        bintray.apikey = System.getenv("bintray.apikey") ?: ''
     }
 
     repositories {
