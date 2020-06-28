@@ -17,8 +17,8 @@
 package me.toptas.okmockerwriter
 
 import android.os.Environment
-import me.toptas.okmocker.core.Logger
-import me.toptas.okmocker.core.toOkMockerFileName
+import me.toptas.okmockerwriter.internal.Logger
+import me.toptas.okmockerwriter.internal.toOkMockerFileName
 import okhttp3.HttpUrl
 import java.io.File
 import java.io.PrintWriter

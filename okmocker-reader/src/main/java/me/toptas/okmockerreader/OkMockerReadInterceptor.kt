@@ -16,8 +16,8 @@
 
 package me.toptas.okmockerreader
 
-import me.toptas.okmocker.core.DefaultLogger
-import me.toptas.okmocker.core.Logger
+import me.toptas.okmockerreader.internal.DefaultLogger
+import me.toptas.okmockerreader.internal.Logger
 import okhttp3.Interceptor
 import okhttp3.Protocol
 import okhttp3.Response

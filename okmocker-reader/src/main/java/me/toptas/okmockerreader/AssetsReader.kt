@@ -17,12 +17,12 @@
 package me.toptas.okmockerreader
 
 import android.content.res.AssetManager
-import me.toptas.okmocker.core.Logger
+import me.toptas.okmockerreader.internal.Logger
+import me.toptas.okmockerreader.internal.toOkMockerFileName
 import okhttp3.Interceptor
 import okhttp3.MediaType
 import okhttp3.Request
 import okhttp3.ResponseBody
-import me.toptas.okmocker.core.toOkMockerFileName
 
 class AssetsReader(private val assets: AssetManager) : OkMockerReader {
 

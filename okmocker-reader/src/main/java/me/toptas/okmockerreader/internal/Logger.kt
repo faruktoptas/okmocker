@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package me.toptas.okmocker.core
+package me.toptas.okmockerreader.internal
 
 interface Logger {
     fun log(msg: String)

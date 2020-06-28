@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package me.toptas.okmocker.core
+package me.toptas.okmockerwriter.internal
 
 fun String.toOkMockerFileName() = replace("://", "_")
     .replace("/", "_")

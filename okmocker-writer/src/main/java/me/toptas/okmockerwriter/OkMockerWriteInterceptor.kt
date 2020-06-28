@@ -16,7 +16,7 @@
 
 package me.toptas.okmockerwriter
 
-import me.toptas.okmocker.core.Logger
+import me.toptas.okmockerwriter.internal.Logger
 import okhttp3.Interceptor
 import okhttp3.Response
 import okio.Buffer
