@@ -7,7 +7,7 @@ buildscript {
         // bintray
         bintrayRepo = "okmocker"
         publishedGroupId = 'me.toptas.okmocker'
-        libraryVersion = '1.0.12'
+        libraryVersion = '1.0.13'
         libraryDescription = 'Mock OkHttp responses at Interceptor level'
         siteUrl = 'https://github.com/faruktoptas/okmocker'
         gitUrl = 'https://github.com/faruktoptas/okmocker'
