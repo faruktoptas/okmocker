@@ -24,7 +24,7 @@ import okio.GzipSource
 import java.io.EOFException
 import java.nio.charset.Charset
 
-class OkMockerWriteInterceptor(private val writer: OkMockerWriter = SdCardWriter()) : Interceptor {
+class OkMockerWriteInterceptor(private val writer: OkMockerWriter) : Interceptor {
 
     var logger: Logger? = null
 

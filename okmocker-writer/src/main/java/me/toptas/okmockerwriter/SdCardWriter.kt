@@ -16,25 +16,25 @@
 
 package me.toptas.okmockerwriter
 
-import android.os.Environment
+import android.content.Context
+import me.toptas.okmocker.core.toOkMockerFileName
 import me.toptas.okmockerwriter.internal.Logger
-import me.toptas.okmockerwriter.internal.toOkMockerFileName
 import okhttp3.HttpUrl
 import java.io.File
 import java.io.PrintWriter
 
 
-class SdCardWriter : OkMockerWriter {
+class SdCardWriter(private val context: Context) : OkMockerWriter {
 
     var logger: Logger? = null
 
     override fun write(url: HttpUrl, body: String) {
-        writeToSd(url.toString().toOkMockerFileName(), body)
+        writeToSd(url.toOkMockerFileName(), body)
     }
 
     private fun writeToSd(file: String, content: String?) {
         if (content == null) return
-        val folder = File(Environment.getExternalStorageDirectory().toString() + "/okmock")
+        val folder = File(context.externalCacheDir.toString() + "/okmocker")
         var success = true
         if (!folder.exists()) {
             success = folder.mkdir()

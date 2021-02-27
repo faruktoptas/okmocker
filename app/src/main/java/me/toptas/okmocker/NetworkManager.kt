@@ -1,6 +1,8 @@
 package me.toptas.okmocker
 
+import android.content.Context
 import me.toptas.okmockerwriter.OkMockerWriteInterceptor
+import me.toptas.okmockerwriter.SdCardWriter
 import me.toptas.okmockerwriter.internal.DefaultLogger
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -11,10 +13,10 @@ class NetworkManager {
     lateinit var apiService: ApiService
     var clientBuilder = OkHttpClient.Builder()
 
-    fun init() {
-
+    fun init(context: Context) {
+        val writer = SdCardWriter(context)
         if (BuildConfig.DEBUG) {
-            clientBuilder.addInterceptor(OkMockerWriteInterceptor().apply {
+            clientBuilder.addInterceptor(OkMockerWriteInterceptor(writer).apply {
                 logger = DefaultLogger()
             })
         }
