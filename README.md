@@ -19,8 +19,11 @@ allprojects {
 Then, add the library to your module `build.gradle`
 ```gradle
 dependencies {
-    implementation 'com.github.faruktoptas.okmocker:okmocker-writer:1.1.0'
-    androidTestImplementation 'com.github.faruktoptas.okmocker:okmocker-reader:1.1.0'
+    implementation 'com.github.faruktoptas.okmocker:okmocker-writer:1.1.1'
+    implementation 'com.github.faruktoptas.okmocker:core:1.1.1'
+
+    androidTestImplementation 'com.github.faruktoptas.okmocker:okmocker-reader:1.1.1'
+    androidTestImplementation 'com.github.faruktoptas.okmocker:core:1.1.1'
 }
 ```
 
@@ -28,7 +31,7 @@ dependencies {
 ### Step 1 - Add writer interceptor to save real responses
 ```kotlin
 if (BuildConfig.DEBUG) {
-    okHttpClientBuilder.addInterceptor(OkMockerWriteInterceptor())
+    okHttpClientBuilder.addInterceptor(OkMockerWriteInterceptor(SdCardWriter(context)))
 }
 ```
 Run the app. Responses from the server will be saved to the external storage. Don't forget to grant `WRITE_EXTERNAL_STORAGE` permission. (If your app doesn't need `WRITE_EXTERNAL_STORAGE` permission [you can add this permission to a specific build variant](https://medium.com/android-bits/implement-build-variant-specific-permissions-a330540871b0) that you run the tests)
@@ -84,10 +87,6 @@ Pass the reader to the interceptor
 ```kotlin
 .addInterceptor(OkMockerReadInterceptor(MyReader()))
 ```
-
-# TODO
-- [ ] Optimize file names
-- [ ] okmocker-mockwebserver
 
 # License
 [Apache License 2.0](https://github.com/faruktoptas/okmocker/blob/master/LICENSE)
