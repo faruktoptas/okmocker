@@ -1,8 +1,9 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.github.dcendents.android-maven'
 apply from: "$rootDir/dependencies.gradle"
+
+group = 'com.github.faruktoptas'
 
 android {
     compileSdkVersion compileVersion
@@ -35,11 +36,6 @@ dependencies {
 }
 repositories {
     mavenCentral()
-}
-
-if (project.rootProject.file('local.properties').exists()) {
-    apply from: 'https://raw.githubusercontent.com/wajahatkarim3/JCenter-Gradle-Scripts/master/install.gradle'
-    apply from: 'https://raw.githubusercontent.com/wajahatkarim3/JCenter-Gradle-Scripts/master/bintray.gradle'
 }
 
 tasks.withType(Test) {
