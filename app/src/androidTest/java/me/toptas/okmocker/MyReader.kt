@@ -12,7 +12,7 @@ import okhttp3.ResponseBody
 class MyReader : OkMockerReader {
 
     override fun read(chain: Interceptor.Chain): ResponseBody {
-        val content = when (chain.request().url().toString().toOkMockerFileName()) {
+        val content = when (chain.request().url().toOkMockerFileName()) {
             "https://PATH" -> "{\"result\":\"some_result\"}"
             else -> "{\"result\":\"result_from_reader\"}"
 

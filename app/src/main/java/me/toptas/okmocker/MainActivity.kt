@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        NetworkManager.instance.init()
+        NetworkManager.instance.init(this)
         val service = NetworkManager.instance.apiService
 
         btn.setOnClickListener {

@@ -17,8 +17,8 @@
 package me.toptas.okmockerreader
 
 import android.content.res.AssetManager
+import me.toptas.okmocker.core.toOkMockerFileName
 import me.toptas.okmockerreader.internal.Logger
-import me.toptas.okmockerreader.internal.toOkMockerFileName
 import okhttp3.Interceptor
 import okhttp3.MediaType
 import okhttp3.Request
@@ -31,10 +31,10 @@ class AssetsReader(private val assets: AssetManager) : OkMockerReader {
     private val folder: String = "okmocker"
 
     override fun canRead(request: Request) =
-        fileExists(assets, folder, request.url().toString().toOkMockerFileName())
+        fileExists(assets, folder, request.url().toOkMockerFileName())
 
     override fun read(chain: Interceptor.Chain): ResponseBody {
-        val path = chain.request().url().toString().toOkMockerFileName()
+        val path = chain.request().url().toOkMockerFileName()
         val content = assets.open("$folder/$path").readBytes()
 
         logger?.log("OkMocker Read from assets: $content")

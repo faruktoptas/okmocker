@@ -1,8 +1,28 @@
-# (WIP) okmocker ![Android CI Action](https://github.com/faruktoptas/okmocker/workflows/Android%20CI/badge.svg)
+# (WIP) okmocker ![Android CI Action](https://github.com/faruktoptas/okmocker/workflows/build/badge.svg)
 
 Mock OkHttp responses at Interceptor level
 
 # Usage
+
+## Download
+Add this in your root `build.gradle` file (**not** your module `build.gradle` file):
+
+```gradle
+allprojects {
+    repositories {
+        ...
+        maven { url "https://jitpack.io" }
+    }
+}
+```
+
+Then, add the library to your module `build.gradle`
+```gradle
+dependencies {
+    implementation 'com.github.faruktoptas.okmocker:okmocker-writer:1.1.0'
+    androidTestImplementation 'com.github.faruktoptas.okmocker:okmocker-reader:1.1.0'
+}
+```
 
 ## Case 1 - Run Espresso tests with mock responses
 ### Step 1 - Add writer interceptor to save real responses
@@ -16,7 +36,7 @@ Run the app. Responses from the server will be saved to the external storage. Do
 ### Step 2 - Pull responses from device storage to assets folder
 Pull saved responses to assets under `androidTest` folder.
 ```bash
-adb pull /sdcard/okmocker app/src/androidTest/assets
+adb pull /sdcard/Android/data/[PACKAGE_NAME]/cache/okmocker app/src/androidTest/assets
 ```
 
 ### Step 3 - Add reader interceptor to tests then run the test
@@ -68,7 +88,6 @@ Pass the reader to the interceptor
 # TODO
 - [ ] Optimize file names
 - [ ] okmocker-mockwebserver
-- [ ] Upload to maven via Github Actions
 
 # License
 [Apache License 2.0](https://github.com/faruktoptas/okmocker/blob/master/LICENSE)
