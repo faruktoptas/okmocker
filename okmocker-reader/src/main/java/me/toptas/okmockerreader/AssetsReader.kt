@@ -17,8 +17,8 @@
 package me.toptas.okmockerreader
 
 import android.content.res.AssetManager
+import me.toptas.okmocker.core.Logger
 import me.toptas.okmocker.core.toOkMockerFileName
-import me.toptas.okmockerreader.internal.Logger
 import okhttp3.Interceptor
 import okhttp3.MediaType
 import okhttp3.Request

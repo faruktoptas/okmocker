@@ -32,6 +32,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
 
     implementation project(':okmocker-writer')
+    implementation project(':core')
     androidTestImplementation project(':okmocker-reader')
     androidTestImplementation project(':core')
 
