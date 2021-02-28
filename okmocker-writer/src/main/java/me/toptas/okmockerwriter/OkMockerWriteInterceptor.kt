@@ -31,15 +31,15 @@ class OkMockerWriteInterceptor(private val writer: OkMockerWriter) : Interceptor
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
         val response = chain.proceed(request)
-        val headers = response.headers()
-        val responseBody = response.body()
+        val headers = response.headers
+        val responseBody = response.body
         val contentLength = responseBody?.contentLength() ?: 0
 
         val source = responseBody?.source()
         source?.request(java.lang.Long.MAX_VALUE) // Buffer the entire body.
-        var buffer = source?.buffer()
+        var buffer = source?.buffer
 
-        if ("gzip".equals(headers.get("Content-Encoding"), ignoreCase = true)) {
+        if ("gzip".equals(headers["Content-Encoding"], ignoreCase = true)) {
             var gzippedResponseBody: GzipSource? = null
             try {
                 if (buffer != null) {
@@ -61,7 +61,7 @@ class OkMockerWriteInterceptor(private val writer: OkMockerWriter) : Interceptor
         if (isPlaintext(buffer) && contentLength != 0L) {
             buffer?.clone()?.readString(charset)?.apply {
                 logger?.log("OkMocker write -> $this")
-                writer.write(request.url(), this)
+                writer.write(request.url, this)
             }
         }
 
@@ -79,7 +79,7 @@ class OkMockerWriteInterceptor(private val writer: OkMockerWriter) : Interceptor
             if (buffer == null) return false
             try {
                 val prefix = Buffer()
-                val byteCount = if (buffer.size() < 64) buffer.size() else 64
+                val byteCount = if (buffer.size < 64) buffer.size else 64
                 buffer.copyTo(prefix, 0, byteCount)
                 for (i in 0..15) {
                     if (prefix.exhausted()) {

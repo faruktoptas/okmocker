@@ -17,21 +17,21 @@
 package me.toptas.okmockerreader
 
 import okhttp3.Interceptor
-import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.Request
 import okhttp3.ResponseBody
+import okhttp3.ResponseBody.Companion.toResponseBody
 
 class Reader : OkMockerReader {
 
     override fun read(chain: Interceptor.Chain): ResponseBody {
-        val path = chain.request().url().toString()
-        val content = when (path) {
+        val content = when (chain.request().url.toString()) {
             PATH_1 -> RESPONSE_1
             PATH_2 -> RESPONSE_2
             else -> RESPONSE_OTHER
 
         }
-        return ResponseBody.create(MediaType.parse("application/json"), content)
+        return content.toResponseBody("application/json".toMediaTypeOrNull())
     }
 
     override fun canRead(request: Request) = true

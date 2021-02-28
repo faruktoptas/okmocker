@@ -5,8 +5,8 @@ import okhttp3.Request
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.Assert
-import org.junit.Test
 import org.junit.Rule
+import org.junit.Test
 
 
 class OkMockerWriterTest {
@@ -27,7 +27,7 @@ class OkMockerWriterTest {
         server.enqueue(MockResponse())
         val response = client.newCall(request().build()).execute()
 
-        Assert.assertEquals(writer.storage, "$url\n${response.body()?.string()}")
+        Assert.assertEquals(writer.storage, "$url\n${response.body?.string()}")
 
     }
 

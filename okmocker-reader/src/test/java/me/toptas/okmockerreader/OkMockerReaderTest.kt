@@ -29,7 +29,7 @@ class OkMockerReaderTest {
         server.enqueue(MockResponse())
 
         val response = client.newCall(request().build()).execute()
-        assertEquals(response.body()?.string(), Reader.RESPONSE_1)
+        assertEquals(response.body?.string(), Reader.RESPONSE_1)
     }
 
     @Test
@@ -39,7 +39,7 @@ class OkMockerReaderTest {
         server.enqueue(MockResponse())
 
         val response = client.newCall(request().build()).execute()
-        assertEquals(response.body()?.string(), Reader.RESPONSE_2)
+        assertEquals(response.body?.string(), Reader.RESPONSE_2)
     }
 
     @Test
@@ -49,7 +49,7 @@ class OkMockerReaderTest {
         server.enqueue(MockResponse())
 
         val response = client.newCall(request().build()).execute()
-        assertEquals(response.body()?.string(), Reader.RESPONSE_OTHER)
+        assertEquals(response.body?.string(), Reader.RESPONSE_OTHER)
     }
 
     private fun request(): Request.Builder {
