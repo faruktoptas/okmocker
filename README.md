@@ -19,11 +19,11 @@ allprojects {
 Then, add the library to your module `build.gradle`
 ```gradle
 dependencies {
-    implementation 'com.github.faruktoptas.okmocker:okmocker-writer:1.1.1'
-    implementation 'com.github.faruktoptas.okmocker:core:1.1.1'
+    implementation 'com.github.faruktoptas.okmocker:okmocker-writer:1.1.2'
+    implementation 'com.github.faruktoptas.okmocker:core:1.1.2'
 
-    androidTestImplementation 'com.github.faruktoptas.okmocker:okmocker-reader:1.1.1'
-    androidTestImplementation 'com.github.faruktoptas.okmocker:core:1.1.1'
+    androidTestImplementation 'com.github.faruktoptas.okmocker:okmocker-reader:1.1.2'
+    androidTestImplementation 'com.github.faruktoptas.okmocker:core:1.1.2'
 }
 ```
 
