@@ -88,5 +88,6 @@ Pass the reader to the interceptor
 .addInterceptor(OkMockerReadInterceptor(MyReader()))
 ```
 
+
 # License
 [Apache License 2.0](https://github.com/faruktoptas/okmocker/blob/master/LICENSE)
